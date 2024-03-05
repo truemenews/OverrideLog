@@ -7,5 +7,13 @@
             "name": "TrueMe",
             "email": "quocvo87@gmail.com"
         }
-    ]
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "php -r \"copy('vendor/override/log/src/Logger.php', 'vendor/laravel/framework/src/Illuminate/Log/Logger.php');\""
+        ],
+        "post-update-cmd": [
+            "php -r \"copy('vendor/override/log/src/Logger.php', 'vendor/laravel/framework/src/Illuminate/Log/Logger.php');\""
+        ]
+    },
 }
