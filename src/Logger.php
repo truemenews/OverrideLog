@@ -14,7 +14,7 @@ class Logger implements LoggerInterface
 {
     public function override()
     {
-        echo 'I am override logger laravel lan 2';
+        echo 'I am override logger laravel lan 3';
     }
     /**
      * The underlying logger implementation.
