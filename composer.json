@@ -15,5 +15,5 @@
         "post-update-cmd": [
             "php -r \"copy('vendor/override/log/src/Logger.php', 'vendor/laravel/framework/src/Illuminate/Log/Logger.php');\""
         ]
-    },
+    }
 }
