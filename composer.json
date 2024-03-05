@@ -7,10 +7,5 @@
             "name": "TrueMe",
             "email": "quocvo87@gmail.com"
         }
-    ],
-    "extra": {
-        "copy-file": {
-            "src/Logger.php": "vendor/laravel/framework/src/Illuminate/Log/Logger.php"
-        }
-    }
+    ]
 }
