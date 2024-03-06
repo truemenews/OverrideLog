@@ -7,5 +7,10 @@
             "name": "TrueMe",
             "email": "quocvo87@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "TrueMe\\": "src/"
+        }
+    },
 }
