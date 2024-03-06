@@ -1,7 +1,7 @@
-<?php
+<?php namespace TrueMe\Build;
 include __DIR__.'/../Config/Log.php';
 
-namespace TrueMe\Build;
+use Composer\Script\Event;
 
 class Process
 {
@@ -10,13 +10,13 @@ class Process
     protected $path;
     protected static $configs;
 
-    public static function override($version=null)
+    public static function override(Event $event)
     {
+        var_dump($event->getArguments());die;
         if (!self::$version = $version) {
             return false;
         }
-
-        var_dump(self::ini());die;
+        var_dump(self::ini());//die;
 
 
         echo 'I am override logger laravel lan 4';
