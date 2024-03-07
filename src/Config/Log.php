@@ -1,5 +1,5 @@
 <?php
-return $configs = [
+return [
     'laravel6' => [
         'version' => 'laravel6',
         'name' => 'Logger.php',

@@ -1,29 +1,49 @@
 <?php namespace TrueMe\Build;
-include __DIR__.'/../Config/Log.php';
+
 
 use Composer\Script\Event;
 
 class Process
 {
-    protected $name;
+    protected static $name;
     protected static $version;
-    protected $path;
+    protected static $srcPath;
+    protected static $desPath;
+
     protected static $configs;
 
     public static function override(Event $event)
     {
-        var_dump($event->getArguments());die;
-        if (!self::$version = $version) {
-            return false;
-        }
-        var_dump(self::ini());//die;
+        if (!self::ini($event->getArguments())) return false;
 
+        var_dump(self::$srcPath);
 
         echo 'I am override logger laravel lan 4';
     }
 
-    public static function ini()
+    public static function ini($event=null)
     {
-        self::$configs = $configs[self::$version];
+        if (!self::$version = @$event[0]) return false;
+
+        self::bootstrap();
+
+        self::$configs = config('log');
+        self::$configs = self::$configs[self::$version];
+
+        self::set();
+
+        return true;
+    }
+
+    public static function set()
+    {
+        foreach (self::$configs as $key => $value) {
+            self::${$key} = $value;
+        }
+    }
+
+    public static function bootstrap($value='')
+    {
+        $GLOBALS['app'] = include __DIR__.'/../App/app.php';
     }
 }
