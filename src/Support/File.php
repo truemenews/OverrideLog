@@ -5,14 +5,16 @@ class File
     protected $name;
     protected $version;
     protected $srcPath;
-    protected $desPath;
+    protected $dstPath;
 
     protected $configs;
     protected $rootPath;
 
+    protected static $instance;
+
     protected function copy()
     {
-        // code...
+        return copy($this->rootPath.$this->srcPath, $this->rootPath.$this->dstPath);
     }
 
     protected function ini($configs=[], $rootPath=nul)
@@ -30,8 +32,8 @@ class File
 
     public static function __callStatic($method, $args)
     {
-        $instance = new static;
+        self::$instance = self::$instance?: new static;
 
-        return $instance->$method(...$args);
+        return self::$instance->$method(...$args);
     }
 }

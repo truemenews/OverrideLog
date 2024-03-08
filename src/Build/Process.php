@@ -15,6 +15,8 @@ class Process
         self::$event = $event;
 
         if (!self::ini()) return false;
+
+        return File::copy();
     }
 
     public static function ini()
