@@ -1,6 +1,8 @@
 <?php namespace TrueMe\Support;
 
-class File
+use TrueMe\Obj\Ini;
+
+class File extends Ini
 {
     protected $name;
     protected $version;
@@ -9,8 +11,6 @@ class File
 
     protected $configs;
     protected $rootPath;
-
-    protected static $instance;
 
     protected function copy()
     {
@@ -28,12 +28,5 @@ class File
     protected function set()
     {
         foreach ($this->configs as $k => $v) $this->{$k} = $v;
-    }
-
-    public static function __callStatic($method, $args)
-    {
-        self::$instance = self::$instance?: new static;
-
-        return self::$instance->$method(...$args);
     }
 }

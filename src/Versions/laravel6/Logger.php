@@ -9,13 +9,11 @@ use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Log\Events\MessageLogged;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
+use TrueMe\Message\Message;
 
 class Logger implements LoggerInterface
 {
-    public function override()
-    {
-        echo 'I am override logger laravel lan 5';
-    }
+    protected $message;
     /**
      * The underlying logger implementation.
      *
@@ -40,6 +38,7 @@ class Logger implements LoggerInterface
     public function __construct(LoggerInterface $logger, Dispatcher $dispatcher = null)
     {
         $this->logger = $logger;
+        $this->message = Message::ini();
         $this->dispatcher = $dispatcher;
     }
 
@@ -233,7 +232,7 @@ class Logger implements LoggerInterface
             return var_export($message->toArray(), true);
         }
 
-        return $message;
+        return $this->message->hide($message);
     }
 
     /**
