@@ -1,21 +1,25 @@
 <?php namespace TrueMe\Message;
 
 use TrueMe\Obj\Ini;
+use TrueMe\Message\Rule\Rule;
 
 class Message extends Ini
 {
-    protected $oriMes;
     protected $resMes;
 
-    protected $rules;
+    protected $props = ['rules'];
+    protected $func = ['hide'=>['oriMes']];
 
-    public function hide($mes='')
+    protected function hide()
     {
-        return 'rule--' . $mes;
+        foreach ($this->rules as $rule)
+            $this->resMes = $rule->apply($this->resMes?:$this->oriMes);
+
+        return $this->resMes;
     }
 
     protected function rules()
     {
-     // code...
-    } 
+        return $this->rules = Rule::ini()->get();
+    }
 }
