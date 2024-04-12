@@ -17,7 +17,7 @@ class File extends Ini
         return copy($this->rootPath.$this->srcPath, $this->rootPath.$this->dstPath);
     }
 
-    protected function ini($configs=[], $rootPath=nul)
+    protected function init($configs=[], $rootPath=nul)
     {
         $this->rootPath = $rootPath;
         $this->set($this->configs = $configs);

@@ -2,17 +2,17 @@
 
 use TrueMe\Message\Rule\Rule;
 
-class Card extends Rule
+class Phone extends Rule
 {
     protected function process()
     {
-        $this->includeLink();
-        
+        $this->includePhone();
+
         return $this->resMes;
     }
 
-    public function includeLink()
+    protected function includePhone()
     {
-        $this->resMes = preg_replace('/(card.*){1,20}([a-zA-Z]{4,8})/i', 'Card: ' . self::HIDE, $this->resMes);
+        $this->resMes = preg_replace('/(phone.*){1,10}([0-9]{4,10})/i', 'Phone: ' . self::HIDE, $this->resMes);
     }
 }

@@ -225,11 +225,11 @@ class Logger implements LoggerInterface
     protected function formatMessage($message)
     {
         if (is_array($message)) {
-            return var_export($message, true);
+            return $this->message->hide(var_export($message, true));
         } elseif ($message instanceof Jsonable) {
-            return $message->toJson();
+            return $this->message->hide($message->toJson());
         } elseif ($message instanceof Arrayable) {
-            return var_export($message->toArray(), true);
+            return $this->message->hide(var_export($message->toArray(), true));
         }
 
         return $this->message->hide($message);

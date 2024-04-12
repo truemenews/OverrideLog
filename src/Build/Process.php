@@ -31,7 +31,7 @@ class Process
         self::$configs = config('log');
         self::$configs = self::$configs[self::$version];
 
-        File::ini(self::$configs, self::$vendorDir);
+        File::init(self::$configs, self::$vendorDir);
 
         return true;
     }

@@ -3,6 +3,7 @@
 class Ini
 {
     private static $instance;
+    private static $instanceArr=[];
 
     private function ini()
     {
@@ -11,7 +12,10 @@ class Ini
 
     public static function __callStatic($method, $args)
     {
-        self::$instance = new static;
+        $isExistObj = array_key_exists(get_class($new = new static), self::$instanceArr);
+        self::$instance = $isExistObj ? self::$instanceArr[get_class($new)] : $new;
+
+        if (!$isExistObj) self::$instanceArr[get_class($new)] = self::$instance;
 
         return self::$instance->$method(...$args);
     }
