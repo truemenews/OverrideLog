@@ -2,7 +2,7 @@
 
 use TrueMe\Message\Rule\Rule;
 
-class Phone extends Rule
+class Card extends Rule
 {
     protected function process()
     {
@@ -13,6 +13,6 @@ class Phone extends Rule
 
     protected function includePhone()
     {
-        $this->resMes = preg_replace('/(phone.*){1,10}([0-9]{4,10})/i', 'Phone: ' . self::HIDE, $this->resMes);
+        $this->resMes = preg_replace('/(card.*){1,10}([0-9]{4,10})/i', 'Card: ' . self::HIDE, $this->resMes);
     }
 }
