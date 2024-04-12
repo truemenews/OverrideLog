@@ -6,12 +6,12 @@ class Phone extends Rule
 {
     protected function process()
     {
-        $this->includeCode();
+        $this->includePhone();
 
         return $this->resMes;
     }
 
-    protected function includeCode()
+    protected function includePhone()
     {
         $this->resMes = preg_replace('/(phone.*){1,20}([0-9]{4,10})/i', 'Phone: ' . self::HIDE, $this->resMes);
     }
